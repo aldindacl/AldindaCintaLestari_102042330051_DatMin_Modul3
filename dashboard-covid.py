@@ -78,7 +78,13 @@ def classify_risk(total_cases):
 df_model['Risiko'] = df_model['Total Cases'].apply(classify_risk)
 
 # Tabel risiko
-st.dataframe(df_model[['Location', 'Total Cases', 'Risiko']].sort_values(by='Total Cases', ascending=False))
+st.dataframe(
+    df_model[[
+        'Location', 'Total Cases', 'Total Deaths',
+        'Total Recovered', 'Population Density',
+        'Case Fatality Rate', 'Risiko'
+    ]].sort_values(by='Total Cases', ascending=False)
+)
 
 # Grafik batang
 st.subheader("📊 Distribusi Jumlah Wilayah per Risiko")
